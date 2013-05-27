@@ -1,6 +1,8 @@
-# Airbnb JavaScript Style Guide() {
+# Apontador JavaScript Style Guide() {
 
 *A mostly reasonable approach to JavaScript*
+
+Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
 
 ## <a name='TOC'>Table of Contents</a>
@@ -1402,6 +1404,7 @@
 
 (The MIT License)
 
+Copyright (c) 2013 Apontador
 Copyright (c) 2012 Airbnb
 
 Permission is hereby granted, free of charge, to any person obtaining
