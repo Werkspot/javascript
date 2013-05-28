@@ -588,7 +588,7 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
 ## <a name='blocks'>Blocks</a>
 
-  - Use braces with all multi-line blocks.
+  - Always use multiline blocks with braces.
 
     ```javascript
     // bad
@@ -596,11 +596,8 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
       return false;
 
     // good
-    if (test) return false;
-
-    // good
     if (test) {
-      return false;
+        return false;
     }
 
     // bad
@@ -608,7 +605,7 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
     // good
     function() {
-      return false;
+        return false;
     }
     ```
 
@@ -710,12 +707,12 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
 ## <a name='whitespace'>Whitespace</a>
 
-  - Use soft tabs set to 2 spaces
+  - Use soft tabs set to 4 spaces
 
     ```javascript
     // bad
     function() {
-    ∙∙∙∙var name;
+    ∙∙var name;
     }
 
     // bad
@@ -725,7 +722,7 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
     // good
     function() {
-    ∙∙var name;
+    ∙∙∙∙var name;
     }
     ```
   - Place 1 space before the leading brace.
