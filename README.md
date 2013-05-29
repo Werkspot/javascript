@@ -89,7 +89,7 @@ So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this
     var item = {};
     ```
 
-  - Wrap your object keys with single quotes and try to avoid [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words).
+  - Avoid wrap object keys with quotes, avoid also the [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words).
 
     ```javascript
     // bad
@@ -99,18 +99,34 @@ So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this
       private: true
     };
 
-    // better
+    // bad for our conventions (doesn't include JSON callback)
     var superman = {
-      'class': 'superhero',
-      'default': { clark: 'kent' },
-      'private': true
+      'foo': 'superhero',
+      'bar': { clark: 'kent' }
     };
 
-    // best
+    // good
     var superman = {
-      'klass': 'superhero',
-      'defaults': { clark: 'kent' },
-      'hidden': true
+      around: 'superhero',
+      the: { clark: 'kent' },
+      world: true
+    };
+
+    // bad
+    var superman = {
+      around: 'superhero',
+      the: { clark: 'kent', lois: 'lane' },
+      world: true
+    };
+
+    // good
+    var superman = {
+      around: 'superhero',
+      the: {
+        clark: 'kent',
+        lois: 'lane'
+      },
+      world: true
     };
     ```
     **[[⬆]](#TOC)**
