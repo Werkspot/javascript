@@ -14,7 +14,6 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
   1. [Functions](#functions)
   1. [Properties](#properties)
   1. [Variables](#variables)
-  1. [Hoisting](#hoisting)
   1. [Conditional Expressions & Equality](#conditionals)
   1. [Blocks](#blocks)
   1. [Comments](#comments)
@@ -30,6 +29,7 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
   1. [ES5 Compatibility](#es5)
   1. [Testing](#testing)
   1. [Performance](#performance)
+  1. [Hoisting](#hoisting)
   1. [Resources](#resources)
   1. [In the Wild](#in-the-wild)
   1. [Translation](#translation)
@@ -487,13 +487,6 @@ So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this
     ```
 
     **[[⬆]](#TOC)**
-
-
-## [Hoisting](resources.md#read-this)
-
-    **[[⬆]](#TOC)**
-
-
 
 ## <a name='conditionals'>Conditional Expressions & Equality</a>
 
@@ -1229,11 +1222,10 @@ So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this
 
   **[[⬆]](#TOC)**
 
+You must take a look:
+### [Hoisting](resources.md#read-this)
+### [Resources](resources.md)
 
-## [Resources](resources.md)
-
-
-  **[[⬆]](#TOC)**
 
 ## <a name='authors'>Contributors</a>
 
