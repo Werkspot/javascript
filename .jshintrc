@@ -47,37 +47,37 @@
     'unused': true,
 
     // Warns when you define and never use your variables
-    'curly': true
+    'curly': true,
 
     // Warns when you use eval
-    'evil': true
+    'evil': true,
 
     // Warns you to filter inherited properties out in a for..in loop
-    'forin': true
+    'forin': true,
 
     // Prohibits the use of immediate function invocations without wrapping them in parentheses
-    'immed': true
+    'immed': true,
 
     // Prohibits the use of arguments.caller and arguments.callee
-    'noarg': true
+    'noarg': true,
 
     // Prohibits empty blocks
-    'noempty': true
+    'noempty': true,
 
     // Prohibits the use of constructor functions for side-effects
-    'nonew': true
+    'nonew': true,
 
     // Disallows the use of dangling _ in the beginning of variables
-    'nomen': true
+    'nomen': true,
 
     // Allows only one var statement per function
-    'onevar': true
+    'onevar': true,
 
     // Requires all functions to run in ECMAScript 5's strict mode
-    'strict': true
+    'strict': true,
 
     // Warns when you define and never use your variables
-    'unused': true
+    'unused': true,
 
     // Code Style warnings
     'white': true
