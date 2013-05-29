@@ -4,9 +4,9 @@
 
 Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
-
 ## <a name='TOC'>Table of Contents</a>
 
+  1. [JSHint](#jshint)
   1. [Types](#types)
   1. [Objects](#objects)
   1. [Arrays](#arrays)
@@ -36,6 +36,11 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
   1. [The JavaScript Style Guide Guide](#guide-guide)
   1. [Contributors](#contributors)
   1. [License](#license)
+
+## <a name='types'>JSHint</a>
+
+Most of the rules documented here can be detected by [JSHint](http://jshint.com).
+So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this repository is the best way to start.
 
 ## <a name='types'>Types</a>
 
@@ -84,7 +89,7 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     var item = {};
     ```
 
-  - Don't use [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) as keys.
+  - Wrap your object keys with single quotes and try to avoid [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words).
 
     ```javascript
     // bad
@@ -94,11 +99,18 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
       private: true
     };
 
-    // good
+    // better
     var superman = {
-      klass: 'superhero',
-      defaults: { clark: 'kent' },
-      hidden: true
+      'class': 'superhero',
+      'default': { clark: 'kent' },
+      'private': true
+    };
+
+    // best
+    var superman = {
+      'klass': 'superhero',
+      'defaults': { clark: 'kent' },
+      'hidden': true
     };
     ```
     **[[⬆]](#TOC)**
@@ -256,14 +268,14 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     };
 
     // named function expression
-    var named = function named() {
+    function named() {
       return true;
-    };
+    }
 
     // immediately-invoked function expression (IIFE)
     (function() {
       console.log('Welcome to the Internet. Please follow me.');
-    })();
+    }());
     ```
 
   - Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
@@ -278,10 +290,8 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     }
 
     // good
-    if (currentUser) {
-      var test = function test() {
-        console.log('Yup.');
-      };
+    function test() {
+      console.log('Nope.');
     }
     ```
 
@@ -339,6 +349,20 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
 
 ## <a name='variables'>Variables</a>
+
+  - Use `window` for global variables
+
+    ```javascript
+    //bad
+    function foo() {
+        myGlobal = 1;
+    }
+
+    //good
+    function foo() {
+        window.myGlobal = 1;
+    }
+    ```
 
   - Always use `var` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
 
@@ -588,12 +612,15 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
 ## <a name='blocks'>Blocks</a>
 
-  - Always use multiline blocks with braces.
+  - Always use braces.
 
     ```javascript
     // bad
     if (test)
       return false;
+
+    // bad
+    if (test) return false;
 
     // good
     if (test) {
@@ -614,15 +641,12 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
 ## <a name='comments'>Comments</a>
 
-  - Use `/** ... */` for multiline comments. Include a description, specify types and values for all parameters and return values.
+  - Use `/** ... */` for multiline comments.
 
     ```javascript
     // bad
     // make() returns a new element
     // based on the passed in tag name
-    //
-    // @param <String> tag
-    // @return <Element> element
     function make(tag) {
 
       // ...stuff...
@@ -634,9 +658,6 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     /**
      * make() returns a new element
      * based on the passed in tag name
-     *
-     * @param <String> tag
-     * @return <Element> element
      */
     function make(tag) {
 
@@ -675,32 +696,6 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
       return type;
     }
     ```
-
-  - Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME -- need to figure this out` or `TODO -- need to implement`.
-
-  - Use `// FIXME:` to annotate problems
-
-    ```javascript
-    function Calculator() {
-
-      // FIXME: shouldn't use a global here
-      total = 0;
-
-      return this;
-    }
-    ```
-
-  - Use `// TODO:` to annotate solutions to problems
-
-    ```javascript
-    function Calculator() {
-
-      // TODO: total should be configurable by an options param
-      this.total = 0;
-
-      return this;
-    }
-  ```
 
     **[[⬆]](#TOC)**
 
@@ -756,14 +751,14 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     // bad
     (function(global) {
       // ...stuff...
-    })(this);
+    }(this));
     ```
 
     ```javascript
     // good
     (function(global) {
       // ...stuff...
-    })(this);
+    }(this));
 
     ```
 
@@ -844,19 +839,13 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     (function() {
       var name = 'Skywalker'
       return name
-    })()
+    }())
 
     // good
     (function() {
       var name = 'Skywalker';
       return name;
-    })();
-
-    // good
-    ;(function() {
-      var name = 'Skywalker';
-      return name;
-    })();
+    }());
     ```
 
     **[[⬆]](#TOC)**
@@ -884,7 +873,6 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     ```
 
   - Use `parseInt` for Numbers and always with a radix for type casting.
-  - If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](http://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
 
     ```javascript
     var inputValue = '4';
@@ -906,14 +894,6 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
 
     // good
     var val = parseInt(inputValue, 10);
-
-    // good
-    /**
-     * parseInt was the reason my code was slow.
-     * Bitshifting the String to coerce it to a
-     * Number made it a lot faster.
-     */
-    var val = inputValue >> 0;
     ```
 
   - Booleans:
@@ -992,18 +972,18 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
     });
     ```
 
-  - Use a leading underscore `_` when naming private properties
+  - Never use a leading underscore `_` when naming private properties
 
     ```javascript
     // bad
     this.__firstName__ = 'Panda';
     this.firstName_ = 'Panda';
 
-    // good
+    // bad
     this._firstName = 'Panda';
     ```
 
-  - When saving a reference to `this` use `_this`.
+  - When saving a reference to `this` use `self`.
 
     ```javascript
     // bad
@@ -1014,7 +994,7 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
       };
     }
 
-    // bad
+    // good
     function() {
       var that = this;
       return function() {
@@ -1317,85 +1297,14 @@ Note: this guideline is based on [Airbnb JavaScript Style Guide](https://github.
   **[[⬆]](#TOC)**
 
 
-## <a name='resources'>Resources</a>
+## [Resources](resources.md)
 
-
-**Read This**
-
-  - [Annotated ECMAScript 5.1](http://es5.github.com/)
-
-**Other Styleguides**
-
-  - [Google JavaScript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-  - [jQuery Core Style Guidelines](http://docs.jquery.com/JQuery_Core_Style_Guidelines)
-  - [Principles of Writing Consistent, Idiomatic JavaScript](https://github.com/rwldrn/idiomatic.js/)
-
-**Other Styles**
-
-  - [Naming this in nested functions](https://gist.github.com/4135065) - Christian Johansen
-  - [Conditional Callbacks](https://github.com/airbnb/javascript/issues/52)
-
-**Books**
-
-  - [JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
-  - [JavaScript Patterns](http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
-  - [Pro JavaScript Design Patterns](http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X)  - Ross Harmes and Dustin Diaz
-  - [High Performance Web Sites: Essential Knowledge for Front-End Engineers](http://www.amazon.com/High-Performance-Web-Sites-Essential/dp/0596529309) - Steve Souders
-  - [Maintainable JavaScript](http://www.amazon.com/Maintainable-JavaScript-Nicholas-C-Zakas/dp/1449327680) - Nicholas C. Zakas
-  - [JavaScript Web Applications](http://www.amazon.com/JavaScript-Web-Applications-Alex-MacCaw/dp/144930351X) - Alex MacCaw
-  - [Pro JavaScript Techniques](http://www.amazon.com/Pro-JavaScript-Techniques-John-Resig/dp/1590597273) - John Resig
-  - [Smashing Node.js: JavaScript Everywhere](http://www.amazon.com/Smashing-Node-js-JavaScript-Everywhere-Magazine/dp/1119962595) - Guillermo Rauch
-
-**Blogs**
-
-  - [DailyJS](http://dailyjs.com/)
-  - [JavaScript Weekly](http://javascriptweekly.com/)
-  - [JavaScript, JavaScript...](http://javascriptweblog.wordpress.com/)
-  - [Bocoup Weblog](http://weblog.bocoup.com/)
-  - [Adequately Good](http://www.adequatelygood.com/)
-  - [NCZOnline](http://www.nczonline.net/)
-  - [Perfection Kills](http://perfectionkills.com/)
-  - [Ben Alman](http://benalman.com/)
-  - [Dmitry Baranovskiy](http://dmitry.baranovskiy.com/)
-  - [Dustin Diaz](http://dustindiaz.com/)
-  - [nettuts](http://net.tutsplus.com/?s=javascript)
 
   **[[⬆]](#TOC)**
 
-## <a name='in-the-wild'>In the Wild</a>
-
-  This is a list of organizations that are using this style guide. Send us a pull request or open an issue and we'll add you to the list.
-
-  - **Airbnb**: [airbnb/javascript](https://github.com/airbnb/javascript)
-  - **American Insitutes for Research**: [AIRAST/javascript](https://github.com/AIRAST/javascript)
-  - **ExactTarget**: [ExactTarget/javascript](https://github.com/ExactTarget/javascript)
-  - **GeneralElectric**: [GeneralElectric/javascript](https://github.com/GeneralElectric/javascript)
-  - **GoodData**: [gooddata/gdc-js-style](https://github.com/gooddata/gdc-js-style)
-  - **How About We**: [howaboutwe/javascript](https://github.com/howaboutwe/javascript)
-  - **MinnPost**: [MinnPost/javascript](https://github.com/MinnPost/javascript)
-  - **ModCloth**: [modcloth/javascript](https://github.com/modcloth/javascript)
-  - **National Geographic**: [natgeo/javascript](https://github.com/natgeo/javascript)
-  - **Razorfish**: [razorfish/javascript-style-guide](https://github.com/razorfish/javascript-style-guide)
-  - **Shutterfly**: [shutterfly/javascript](https://github.com/shutterfly/javascript)
-  - **Userify**: [userify/javascript](https://github.com/userify/javascript)
-  - **Zillow**: [zillow/javascript](https://github.com/zillow/javascript)
-
-## <a name='translation'>Translation</a>
-
-  This style guide is also available in other languages:
-
-  - :de: **German**: [timofurrer/javascript-style-guide](https://github.com/timofurrer/javascript-style-guide)
-  - :jp: **Japanese**: [mitsuruog/javacript-style-guide](https://github.com/mitsuruog/javacript-style-guide)
-  - :br: **Portuguese**: [armoucar/javascript-style-guide](https://github.com/armoucar/javascript-style-guide)
-
-## <a name='guide-guide'>The JavaScript Style Guide Guide</a>
-
-  - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
-
 ## <a name='authors'>Contributors</a>
 
-  - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
-
+  - [View Contributors](https://github.com/apontador/javascript/graphs/contributors)
 
 ## <a name='license'>License</a>
 

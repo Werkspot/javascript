@@ -1,0 +1,81 @@
+{
+    /*
+     * ENVIRONMENTS
+     * =================
+     */
+
+    // Define globals exposed by modern browsers.
+    'browser': true,
+
+    // Define globals exposed by jQuery.
+    'jquery': true,
+
+    /*
+     * ENFORCING OPTIONS
+     * =================
+     */
+
+    // Force all variable names to use either camelCase style or UPPER_CASE
+    // with underscores.
+    'camelcase': true,
+
+    // Prohibit use of == and != in favor of === and !==.
+    'eqeqeq': true,
+
+    // Suppress warnings about == null comparisons.
+    'eqnull': true,
+
+    // Enforce tab width of 2 spaces.
+    'indent': 2,
+
+    // Prohibit use of a variable before it is defined.
+    'latedef': true,
+
+    // Require capitalized names for constructor functions.
+    'newcap': true,
+
+    // Enforce use of single quotation marks for strings.
+    'quotmark': "single",
+
+    // Prohibit trailing whitespace.
+    'trailing': true,
+
+    // Prohibit use of explicitly undeclared variables.
+    'undef': true,
+
+    // Warn when variables are defined but never used.
+    'unused': true,
+
+    // Warns when you define and never use your variables
+    'curly': true
+
+    // Warns when you use eval
+    'evil': true
+
+    // Warns you to filter inherited properties out in a for..in loop
+    'forin': true
+
+    // Prohibits the use of immediate function invocations without wrapping them in parentheses
+    'immed': true
+
+    // Prohibits the use of arguments.caller and arguments.callee
+    'noarg': true
+
+    // Prohibits empty blocks
+    'noempty': true
+
+    // Prohibits the use of constructor functions for side-effects
+    'nonew': true
+
+    // Disallows the use of dangling _ in the beginning of variables
+    'nomen': true
+
+    // Allows only one var statement per function
+    'onevar': true
+
+    // Requires all functions to run in ECMAScript 5's strict mode
+    'strict': true
+
+    // Warns when you define and never use your variables
+    'unused': true
+}
