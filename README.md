@@ -186,7 +186,7 @@ So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this
     var fullName = 'Bob ' + this.lastName;
     ```
 
-  - Strings longer than 80 characters should be written across multiple lines using string concatenation.
+  - Strings longer than 80 characters should be written in array and concatenated with `join()`.
   - Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40)
 
     ```javascript
@@ -203,12 +203,14 @@ So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this
 
 
     // good
-    var errorMessage = 'This is a super long error that ' +
-      'was thrown because of Batman.' +
-      'When you stop to think about ' +
-      'how Batman had anything to do ' +
-      'with this, you would get nowhere ' +
-      'fast.';
+    var errorMessage = [
+        'This is a super long error that ',
+        'was thrown because of Batman.',
+        'When you stop to think about ',
+        'how Batman had anything to do ',
+        'with this, you would get nowhere ',
+        'fast.'
+    ].join('');
     ```
 
   - When programatically building up a string, use Array#join instead of string concatenation. Mostly for IE: [jsPerf](http://jsperf.com/string-vs-array-concat/2).
