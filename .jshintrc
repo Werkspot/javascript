@@ -78,4 +78,7 @@
 
     // Warns when you define and never use your variables
     'unused': true
+
+    // Code Style warnings
+    'white': true
 }
