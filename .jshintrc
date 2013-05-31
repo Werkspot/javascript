@@ -22,5 +22,6 @@
     "onevar": true,
     "strict": true,
     "unused": true,
-    "white": true
+    "white": true,
+    "node": true
 }
