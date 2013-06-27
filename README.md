@@ -937,20 +937,6 @@ So running *JSHint*, with our [.jshintrc](.jshintrc), before adding code to this
     }
     ```
 
-  - Name your functions. This is helpful for stack traces.
-
-    ```javascript
-    // bad
-    var log = function(msg) {
-      console.log(msg);
-    };
-
-    // good
-    var log = function log(msg) {
-      console.log(msg);
-    };
-    ```
-
     **[[⬆]](#TOC)**
 
 
