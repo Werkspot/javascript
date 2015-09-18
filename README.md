@@ -1,4 +1,4 @@
-# Apontador JavaScript Style Guide() {
+# Werkspot JavaScript Style Guide() {
 
 *A mostly reasonable approach to JavaScript*
 
